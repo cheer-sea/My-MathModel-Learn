@@ -17,10 +17,10 @@ data_number = readtable('附件1.xlsx', opts_num);
 data_2 = readtable('仅销售.xlsx', opts_goods);
 
 % 把附件二中的数据转为年月日，并先用变量储存
-date_2_date = datetime(data_2{:, 1}, 'InputFormat', 'yyyy-mm-dd');
-years = year(date_2_date);
-months = month(date_2_date);
-days = day(date_2_date);
+data_2_date = datetime(data_2{:, 1}, 'InputFormat', 'yyyy-mm-dd');
+years = year(data_2_date);
+months = month(data_2_date);
+days = day(data_2_date);
 
 %% 第二，开始匹配编码
 
@@ -36,8 +36,8 @@ ty = data_number{row_index, 3};
 
 %% 第三，制作结果表格并输出为Excel形式
 
-vari_name = {'Year', 'Month', 'Day', 'Sales', 'Price', 'Name', 'Type'};
-data_2_res = table(years, months, days, data_2{:, 3}, data_2{:, 4}, ...
+vari_name = {'Year', 'Month', 'Day', 'Number', 'Sales', 'Price', 'Name', 'Type'};
+data_2_res = table(years, months, days, data_2{:, 2}, data_2{:, 3}, data_2{:, 4}, ...
     name, ty, 'VariableNames', vari_name);
 
 writetable(data_2_res, '附件二处理结果(仅销售)_1.xlsx');

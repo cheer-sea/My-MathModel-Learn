@@ -1,6 +1,6 @@
 %{
     2023年数模真题C，第一问，数据预处理，
-    通过附件一的单品编码确认附件二各数据的单品。
+    通过附件一的单品编码确认附件二各数据的单品名称。
 %}
 
 %% 第一，读取Excel文件
@@ -8,7 +8,7 @@
 % 设置附件一读取方式（第1列编码，第2列名称，第4列分类）
 opts_num = detectImportOptions('附件1.xlsx');
 opts_num.SelectedVariableNames = opts_num.VariableNames([1, 2, 4]);
-% 设置附件二读取方式（第1列日期，第3列编码，第4列销量，第5列单价）
+% 设置'仅销售'Excel读取方式（第1列日期，第3列编码，第4列销量，第5列单价）
 opts_goods = detectImportOptions('仅销售.xlsx');
 opts_goods.SelectedVariableNames = opts_goods.VariableNames([1, 3, 4, 5]);
 
